@@ -1,9 +1,10 @@
 <?php
 $users = 'pages/users.txt';
-function err_log($text)
+function err_log($text, $is_error = true)
 {
-    echo "<h3><span style='color: red'>$text</span></h3>";
-    return false;
+    $color = $is_error?'red':'green';
+    echo "<h3><span style='color:$color'>$text</span></h3>";
+    return $is_error?false:'';
 }
 function register ($name, $pass, $email)
 {
