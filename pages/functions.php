@@ -1,18 +1,18 @@
 <?php
 $users = 'pages/users.txt';
-function err_log($text, $is_error = true)
+function err_log(string $text, bool $is_error = true) : bool
 {
     $color = $is_error?'red':'green';
     echo "<h3><span style='color:$color'>$text</span></h3>";
-    return $is_error?false:'';
+    return $is_error?false:true;
 }
-function register ($name, $pass, $email)
+function register (string $name, string $pass, string $email) : bool
 {
     $name = trim(htmlspecialchars($name));
     $pass = trim(htmlspecialchars($pass));
     $email = trim(htmlspecialchars($email));
 
-    if ($name == '' || $pass == '' || $email == '') {
+    if ($name === '' || $pass === '' || $email === '') {
         return err_log('Fill All Required fields');
     }
 
@@ -20,7 +20,7 @@ function register ($name, $pass, $email)
     $file = fopen($users, 'a+');
     while($line = fgets($file)) {
         $readname = substr($line, 0, strpos($line, ':'));
-        if ($readname == $name) {
+        if ($readname === $name) {
             return err_log('Such Login Name Is Already Used!');
         }
     }
