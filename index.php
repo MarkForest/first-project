@@ -25,18 +25,21 @@
             <?php
                 if (isset($_GET['page'])) {
                     switch ($_GET['page']) {
-                        case 2:
+                        case 2: {
                             include_once 'pages/upload.php';
-                            break;
-                        case 3:
+                            break; }
+                        case 3: {
                             include_once 'pages/gallery.php';
-                            break;
-                        case 4:
+                            break; }
+                        case 4: {
                             include_once 'pages/registration.php';
-                            break;
-                        case 1:
+                            break; }
+                        case 1: {
                             include_once 'pages/home.php';
-                            break;
+                            break; }
+                        default: {
+                            echo '<h1>Page to found</h1>';
+                            break; }
                     }
                 } else {
                     include_once 'pages/home.php';
